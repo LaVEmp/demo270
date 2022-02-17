@@ -1,0 +1,13 @@
+requests
+torch
+tqdm
+pandas
+pillow
+matplotlib
+visdom
+flask
+flask_cors
+django
+scikit-learn
+lightgbm
+pyyaml

@@ -1,0 +1,44 @@
+MODEL:
+  params:
+    num_leaves: 31
+    max_depth: 4
+    learning_rate: 0.1  # 0.01-0.3  # not use actually
+    num_boost_round: 100  # not use actually
+    #    ------for overfitting.-----------
+    min_data_in_leaf: 20
+    min_sum_hessian_in_leaf: 0.001
+    feature_fraction: 0.8  # 0.5-0.9
+    bagging_freq: 2  # 3-5
+    bagging_fraction: 0.9  # 0.5-0.9
+    early_stopping_rounds: 50
+    lambda_l1: 0.2
+    lambda_l2: 0.1
+    #    ------------fixed-----------------
+    boosting_type: 'gbdt'
+    objective: 'regression'
+    verbosity: -1  # for show log.
+    metric: 'regression_l2'
+    seed: 2021
+
+  num_boost_round_list: [ 800, 500, 250 ]  # not use in train_by_grid_search type.
+  lr_list: [ 0.06, 0.1, 0.03 ]  # not use in train_by_grid_search type.
+  lgb_model_path: './model_save/model_X_lgb_20211227.txt'
+# # Tip: 'X' or 'Y' axis will be determined by args.axis.
+#  test_size: 0.3
+#  random_state: 2021
+  use_sample_weight: True  # not use in train_by_grid_search type.
+  free_raw_data: False  # use only when len(num_boost_round_list) > 1
+
+  train_by_grid_search: False
+  param_grid: # Params for lgb.LGBMClassifier. NOT FOR lgb.train method!!!
+    max_depth: [ 4, 6, 8 ]
+    num_leaves: [ 31, 63, 127 ]
+#    min_child_samples: [ 15, 20, 30 ]
+#    min_child_weight: [ 0.001, 0.002 ]
+#    colsample_bytree: [ 0.6, 0.8, 1 ]
+#    subsample: [ 0.8, 0.9 ,1 ]
+#    subsample_freq: [ 2, 3, 4 ]
+#    lambda_l1: [ 0.0, 0.1, 0.2 ]
+#    lambda_l2: [ 0.0, 0.1, 0.2 ]
+#    learning_rate: [ 0.2, 0.1, 0.03 ]
+#    n_estimators: [ 800, 300, 100 ]

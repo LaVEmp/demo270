@@ -1,0 +1,4 @@
+# Project exclude paths
+/dataset_offline/
+/model_save/
+/result/

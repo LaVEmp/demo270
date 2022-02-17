@@ -1,0 +1,52 @@
+MODEL:
+  in_dim: 7  # should be same as len(configs.dataset_config['input_data_columns'])
+  hidden_dim: [ 64, 32, ]
+
+  # lstm configs.
+  lstm_hidden_dim: 32
+  lstm_num_layers: 4
+
+  # cnn convT configs.
+  convT_hidden_dim: [ 16, 16, 16, 3 ]
+  convT_kernel_size: [ 7, 7, 5, 5 ]
+  convT_stride: [ 1, 4, 3, 3 ]
+  convT_output_padding: [ 0, 0, 2, 1 ]
+  convT_padding: [ 0, 3, 2, 2 ]
+
+  # cnn conv configs.
+  conv_hidden_dim: [ 16, 16, 32 ]
+  conv_kernel_size: [ 5, 5, 3 ]
+  conv_stride: [ 2, 2, 2 ]
+  conv_padding: [ 2, 2, 1 ]
+
+  n_classes: 1
+  device: 'cuda'
+  nn_model_path: './model_save/model_X_dnn_20211227.pth'
+# # Tip: 'X' or 'Y' axis will be determined by args.axis.
+#  # lstm_model_path and cnn_model_path will be edited by their class __init__() func.
+#  lstm_model_path: './model_save/model_lstm_20211227.pth'
+#  cnn_model_path: './model_save/model_cnn_20211227.pth'
+  fixed_seed: 2021
+
+TRAIN:
+  lr: 0.1
+  epochs: 1
+  max_step_per_epoch:
+  criterion:
+  optimizer:
+  milestones: [ 10000, 20000, 60000, 120000, 400000 ]
+  gamma: 0.5
+  print_to_file: False
+
+  use_sample_weight: False
+  use_relative_loss: False
+
+VALID:
+  epoch: 1
+  criterion:
+
+  use_sample_weight: False  # should be same as TRAIN['use_sample_weight']
+  use_relative_loss: False  # should be same as TRAIN['use_relative_loss']
+
+
+

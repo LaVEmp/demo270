@@ -1,0 +1,37 @@
+# ===== PATH =====
+
+# # Tip: 'X' or 'Y' axis will be determined by args.axis.
+meta_dataset_path: './dataset_offline/meta_dataset_x.csv'  # actually not use whether train or valid.
+train_dataset_path: './dataset_offline/train_x.csv'  # train use this.
+test_dataset_path: './dataset_offline/test_x.csv'  # valid use this.
+dataset_cleaned_path: './dataset_offline/dataset_x_cleaned.csv'
+result_save_path: './result/result_x.csv'
+
+save_result: True
+save_loss: False
+train_log_save_path: './result/train_log_20211224.csv'
+
+# ===== CONFIGS =====
+
+dataset_process: True
+test_size: 0.2
+
+write_to_yaml_file: True
+yaml_file_path: './configs/feature_config.yaml'
+
+input_data_columns: [ 0, 1, 3, 4, 5, 6, 8 ]
+label_column: 7
+label_column_name: 'error_s'
+seq_len: 14
+
+batch_size: 16
+batch_size_mlu: 16  # use when transferring.
+
+shuffle: True
+shuffle_valid: False
+
+balance_by_delta_and_shuffle: True
+balance_by_delta_thres: 0.005
+
+fixed_seed: 2021
+
